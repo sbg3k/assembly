@@ -1,0 +1,30 @@
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JG   L2            ;If it is greater than largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
