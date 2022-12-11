@@ -1,0 +1,322 @@
+come up with 8086 code for comparing multiple numbers and displaying the largest number
+use flat memory model and variable declaration:
+
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JG   L2            ;If it is greater than largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+make 10 versions of this code
+
+Version 2:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JGE  L2            ;If it is greater than or equal to largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 3:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JL   L2            ;If it is less than largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 4:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JLE  L2            ;If it is less than or equal to largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 5:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JA   L2            ;If it is greater than largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 6:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JAE  L2            ;If it is greater than or equal to largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 7:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JE   L2            ;If it is equal to largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 8:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JNE  L2            ;If not equal, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 9:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JB   L2            ;If it is less than largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
+
+Version 10:
+.MODEL  small
+.STACK  100h
+.DATA
+arr DW 5,10,15,20,25
+largest DW ?
+
+.CODE
+MOV  AX,@DATA      ;Set DS
+MOV  DS,AX
+
+MOV  BX,0          ;Set the loop counter BX to 0
+MOV  SI,OFFSET arr ;Load the address of the array
+
+MOV  AX,[SI]       ;Load the first element of the array
+MOV  largest,AX    ;Store it in the variable largest
+
+L1: INC  BX         ;Increment BX
+MOV  AX,[SI+BX*2]  ;Load the next element of array
+
+CMP  AX,largest    ;Compare it with the largest
+JBE  L2            ;If it is less than or equal to largest, jump to L2
+
+L2: MOV  largest,AX ;Else, store the element in the variable largest
+CMP  BX,4          ;Compare BX with 4
+JNE  L1            ;If not equal, jump to L1
+
+MOV  AX,largest    ;Load the largest number
+
+.EXIT
+END
